@@ -15,6 +15,9 @@ import {
 import { DateTime } from 'luxon'
 
 const useStyles = makeStyles((theme) => ({
+  tableRoot: {
+    overflow: 'hidden'
+  },
   head: {
     background: theme.palette.primary.dark,
     color: theme.palette.primary.contrastText
@@ -28,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const columns = [
+const COLUMNS = [
   { id: 'username', label: 'Username' },
   { id: 'full_name', label: 'Name' },
   { id: 'job_title', label: 'Job title' },
@@ -57,10 +60,10 @@ const UsersTable = ({
   return (
     <Paper>
       <TableContainer>
-        <Table>
+        <Table className={classes.tableRoot}>
           <TableHead>
             <TableRow>
-              {columns.map((col) => (
+              {COLUMNS.map((col) => (
                 <TableCell key={col.id} classes={{ head: classes.head }}>
                   {col.label}
                 </TableCell>
@@ -79,7 +82,7 @@ const UsersTable = ({
                   hover={true}
                   to={`/user/${row.id}`}
                 >
-                  {columns.map((col) => {
+                  {COLUMNS.map((col) => {
                     const date = DateTime.fromISO(row[col.id]).toLocaleString(
                       DateTime.DATETIME_MED_WITH_WEEKDAY
                     )

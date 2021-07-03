@@ -5,7 +5,7 @@ import CallIcon from '@material-ui/icons/Call'
 import LanguageIcon from '@material-ui/icons/Language'
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline'
 
-const rows = [
+const ROWS = [
   { id: 'gender', label: 'Gender' },
   { id: 'branch', label: 'Branch' },
   { id: 'department', label: 'Department' },
@@ -104,7 +104,7 @@ const UserData = ({ details }) => {
         </Box>
 
         <Box className={classes.dataCtn}>
-          {rows.map((row) => {
+          {ROWS.map((row) => {
             const date = DateTime.fromISO(details.birthdate).toLocaleString(
               DateTime.DATE_SHORT
             )
